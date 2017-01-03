@@ -1,0 +1,23 @@
+﻿@model DAL.Post
+
+@{
+    ViewBag.Title = "Index";
+}
+@*the view for the relevant post on the forum, this is where the users would talk about the post, which would be a topic of conversation*@
+<h2>Index</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+
+
+</table>

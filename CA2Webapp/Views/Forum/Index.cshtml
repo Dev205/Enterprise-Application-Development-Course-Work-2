@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DAL.Forum>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Forder Forums</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Forum Name
+            </th>
+            <th>
+                Thread Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                </td>
+                @{ var postTitle = Model.Where(n => n.ID == item.ID).FirstOrDefault().Posts.Where(n => n.Forum.ID == item.ID).ToList();}
+                <td>
+                    <table class="table table-hover">
+                        @foreach (var post in postTitle)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink(post.Title, "Index", "Post", new { forumID = item.ID, postID = post.ID }, null)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*@foreach (var item in Model)
+{
+    <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+        <table>
+            @{ var postTitle = Model.Where(n => n.ID == item.ID).FirstOrDefault().Posts.Where(n => n.Forum.ID == item.ID).ToList();}
+            @foreach (var post in postTitle)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(post.Title, "Index", "Post", new { forumID = item.ID, postID = post.ID }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+}*@
+
