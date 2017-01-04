@@ -46,5 +46,22 @@ namespace CA2Webapp.Controllers
 
             return RedirectToAction("Index");
         }
+        //get new forum view
+        public ActionResult addNewForum()
+        {
+            return View();
+        }
+        //post for adding a new forum
+        [HttpPost]
+        public ActionResult addNewForum(Forum newForum)
+        {
+            if (ModelState.IsValid)
+            {
+                dataAccess.addNewForum(newForum);
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }
