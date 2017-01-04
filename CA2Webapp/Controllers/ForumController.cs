@@ -27,5 +27,24 @@ namespace CA2Webapp.Controllers
             var ForumModelView = dataAccess.getForums();
             return View(ForumModelView);
         }
+        //get view
+        public ActionResult addPostToForum(long forumID)
+        {
+            TempData["ForumID"] = forumID;
+            return View();
+        }
+        //post 
+        [HttpPost]
+        public ActionResult addPostToForum(Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                long forumID = (long)TempData["ForumID"];
+                dataAccess.addForumPost(post, forumID);
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

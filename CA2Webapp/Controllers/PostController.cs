@@ -22,5 +22,7 @@ namespace CA2Webapp.Controllers
             var postModelView = dataAccess.getPost(forumID, postID);
             return View(postModelView);
         }
+
+
     }
 }
