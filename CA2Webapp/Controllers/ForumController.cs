@@ -63,5 +63,11 @@ namespace CA2Webapp.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult deleteForum(long forumID)
+        {
+            dataAccess.removeItem(forumID, "forum");
+            return RedirectToAction("Index");
+        }
+
     }
 }

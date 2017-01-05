@@ -16,11 +16,20 @@ namespace CA2Webapp.Controllers
             dataAccess = new DALAccess();
 
         }
+
+
         // GET: Post
         public ActionResult Index(int forumID, int postID)
         {
             var postModelView = dataAccess.getPost(forumID, postID);
             return View(postModelView);
+        }
+
+        public ActionResult deletePost(long postID)
+        {
+            dataAccess.removeItem(postID, "post");
+            return RedirectToAction("Index", "Forum");
+
         }
 
 
