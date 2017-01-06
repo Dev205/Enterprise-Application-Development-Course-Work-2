@@ -41,6 +41,12 @@ namespace CA2Webapp.Controllers
             return RedirectToAction("Index", "Post", new { forumID = forumID, postID = postID });
         }
 
+        public ActionResult deleteComment(long commentID, long forumID, long postID)
+        {
+            dataAccess.removeItem(commentID, "comment");
+            return RedirectToAction("Index", "Post", new { forumID = forumID, postID = postID });
+        }
+
 
     }
 }
