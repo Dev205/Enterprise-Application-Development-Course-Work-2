@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA2Webapp", "CA2Webapp\CA2Webapp.csproj", "{E3A5A5EA-4F50-4CE4-A9A5-5FE0D6EA40E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\CA2\DAL\DAL.csproj", "{D857C2B5-8CBF-4A5B-B68C-94778B0543FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{D857C2B5-8CBF-4A5B-B68C-94778B0543FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

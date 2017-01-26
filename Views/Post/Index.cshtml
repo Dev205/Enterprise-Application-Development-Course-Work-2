@@ -1,0 +1,33 @@
+﻿@model DAL.Post
+
+@{
+    ViewBag.Title = "Index";
+}
+@*the view for the relevant post on the forum, this is where the users would talk about the post, which would be a topic of conversation*@
+<h2>@Html.DisplayFor(model => model.Forum.Title) Forum</h2>
+<hr />
+<h4>@Html.DisplayFor(model => model.Title)
+</h4>
+<p>@Html.ActionLink("Delete Post", "deletePost", "Post", new { postID = Model.ID }, new { onclick = "return confirm('Are you sure you want to delete this post?')" }) </p>
+<table class="table">
+    
+        @foreach (var item in Model.Comments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(n => item.Content)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("Delete Comment", "deleteComment", "Comment", new { commentID = item.ID, forumID = Model.Forum.ID, postID = Model.ID }, new { onclick = "return confirm('Are you sure you want to delete this comment?')" })
+                </td>
+            </tr>
+        }
+
+    <tr>
+        <td>
+            @{Html.RenderAction("newComment", "Comment", new {forumID = Model.Forum.ID, postID = Model.ID });}
+        </td>
+    </tr>
+</table>

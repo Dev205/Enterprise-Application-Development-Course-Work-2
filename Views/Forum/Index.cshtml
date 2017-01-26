@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DAL.Forum>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Forder Forums</h2>
+
+<p>
+    @Html.ActionLink("Create New Forum", "addNewForum", "Forum")
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Forum Name
+            </th>
+            <th>
+                Thread Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                    <p>@Html.ActionLink("Delete Forum", "deleteForum", "Forum", new { forumID = item.ID }, new { onclick = "return confirm('Are you sure you want to delete this forum?')" }) </p>
+                </td>
+                
+                
+                @{ var postTitle = Model.Where(n => n.ID == item.ID).FirstOrDefault().Posts.Where(n => n.Forum.ID == item.ID).ToList();}
+                <td>
+                    <table class="table table-hover">
+                        @foreach (var post in postTitle)
+                    {
+                            <tr>
+                                <td>
+                                    @*Link to the post view for the relevant post*@
+                                    @Html.ActionLink(post.Title, "Index", "Post", new { forumID = item.ID, postID = post.ID }, null)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    @Html.ActionLink("Add New Post", "addPostToForum", "Forum", new { forumID = item.ID}, new { @class = "btn btn-warning col-sm-offset-1" })
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

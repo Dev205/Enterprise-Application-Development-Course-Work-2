@@ -1,0 +1,19 @@
+﻿@model DAL.Article
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Welcome</h2>
+
+<h5>When you are done reading come for a chat in our @Html.ActionLink("Forums", "Index", "Forum")</h5>
+<hr />
+<div>
+    <h3>@Html.DisplayFor(m => m.Title)</h3>
+    <p class="text-left">
+    @Html.Raw(Model.Content)
+    </p>
+    <p>
+        <em>Written By @Html.DisplayFor(m => m.UserName)</em>
+    </p>
+</div>
